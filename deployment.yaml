@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d2s-learn
+  labels:
+    type: restapi
+spec:
+  selector: 
+    matchLabels:
+      app: d2s-learn
+  replicas: 3
+  template:
+    metadata:
+      name: d2s-learn-tmpl
+      labels:
+        app: d2s-learn
+    spec:
+      containers:
+        - name: d2s-learn
+          image: jwongcaci/d2s-learn:latest
+          ports:
+            - containerPort: 5000
